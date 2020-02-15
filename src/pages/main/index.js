@@ -1,5 +1,7 @@
-import React, {components, Component} from 'react';
+import React, {Component} from 'react';
 import api from '../../services/api';
+
+import './styles.css';
 
 // Classe que retorna a estrutura da página principal
 export default class Main extends Component {
@@ -11,7 +13,7 @@ export default class Main extends Component {
     // exemplo de contagem das variáveis.
     state = {
         products: [],
-    }   
+    };
 
     /**
      * Método executado assim que o componente for 
@@ -35,11 +37,25 @@ export default class Main extends Component {
     };
 
     render() {
-    // return <h1> Contagem de produtos: {this.state.products.length} </h1>;
+        // return <h1> Contagem de produtos: {this.state.products.length} </h1>;
+
+        const { products } = this.state;
+
         return (
             <div className="product-list">
                 { 
-                    this.state.products.map( p => (<h2>{p.title}</h2>))
+                    // O react exige que coloquemos uma key para cada item do array
+                    // quando utilizamos o map() do js. Dessa forma, key={p._id} deve
+                    // ser adicionado para atribuir uma key para cada um. Isso evita
+                    // o erro no console
+                    products.map( p => (
+                        <article key={p._id}>
+                            <strong>{p.title}</strong>    
+                            <p>{p.description}</p>
+
+                            <a href="#">Acessar</a>
+                        </article>
+                    ))
                 }
             </div>
         );
