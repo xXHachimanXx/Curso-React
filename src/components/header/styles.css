@@ -10,12 +10,25 @@ header#main-header{
     align-items: center;
 }
 
-img {
+header img {
     height: 30px;
     width: auto;
     padding: 0 10px 0 10px;
     display: inline-block;
     vertical-align: top;
     box-sizing: inherit;
+}
+
+.rotate {    
+    animation: roda 4s infinite linear;
+}
+
+@keyframes roda{
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);        
+    }
 }
 
